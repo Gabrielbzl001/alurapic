@@ -1,24 +1,29 @@
 <template>
     <nav>
-      <ul>
-        <li  v-for="route in routes" :key="route.path">
-          <router-link :to="route.path ? route.path : '/'">{{route.titulo}}</router-link>
-        </li>
+      <ul>       
+          <li v-for="rota in rotas">
+            <router-link :to="rota.path ? rota.path : '/'">
+              {{ rota.titulo }}
+            </router-link>
+          </li>
       </ul>
     </nav>
 </template>
 
 <script>
-export default{
+
+export default {
+
     props: {
-        routes: {
-            required: true,
+
+        rotas: {
             type: Array,
+            required: true
         }
     }
 }
+
 </script>
 
 <style>
-
 </style>

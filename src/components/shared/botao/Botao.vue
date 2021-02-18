@@ -1,57 +1,70 @@
 <template>
-    <button @click="disparaAcao()" class="botao" :class="estiloDoBotao" :tipo="tipo"> {{rotulo}} </button>
+    <button @click="disparaAcao()" class="botao" :class="estiloDoBotao" :type="tipo">{{ rotulo }}</button>
 </template>
 
 <script>
-export default{
+
+export default {
+
     props: {
-        tipo:{
-            required: true,
+
+        tipo: {
+            required: true, 
             type: String
         },
-        rotulo:{
-            required: true,
+
+        rotulo: {
+            required: true, 
             type: String
-        },
+        }, 
+
         confirmacao: Boolean,
         estilo: String
+
     },
+
     methods: {
-        disparaAcao(){
-            if(this.confirmacao){
-                if(confirm('Confirma operação?')){
-                    this.$emit('botaoAtivado')
+
+        disparaAcao() {
+
+            if(this.confirmacao) {
+                if(confirm('Confirma operação?')) {
+                    this.$emit('botaoAtivado');
                 }
-                return
+                return;
             }
-            this.$emit('botaoAtivado')
+            this.$emit('botaoAtivado');
         }
     },
-    computed:{
-        estiloDoBotao(){
-            if(this.estilo == 'padrao' || !this.estilo) return 'botao-padrao'
-            if(this.estilo == 'perigo') return 'botao-perigo'
+
+    computed: {
+
+        estiloDoBotao() {
+
+            if(this.estilo == 'padrao' || !this.estilo) return 'botao-padrao';
+            if(this.estilo == 'perigo') return 'botao-perigo';
         }
+
     }
 }
 </script>
 
 <style>
-.botao {
-    display: inline-block;
-    padding: 10px;
-    border-radius: 3px;
-    margin: 10px;
-    font-size: 1.2em;
-}
+    .botao {
+        display: inline-block;
+        padding: 10px;
+        border-radius: 3px;
+        margin: 10px;
+        font-size: 1.2em;
+    }
 
-.botao-perigo{
-    background-color: firebrick;
-    color: white;
-}
+    .botao-perigo {
+        background: firebrick;
+        color: white;
+    }
 
-.botao-padrao{
-    background: darkcyan;
-    color: white;
-}
+    .botao-padrao {
+        background: darkcyan;
+        color: white;
+    }
 </style>
